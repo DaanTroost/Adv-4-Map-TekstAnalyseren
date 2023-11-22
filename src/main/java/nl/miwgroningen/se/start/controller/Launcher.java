@@ -1,5 +1,6 @@
 package nl.miwgroningen.se.start.controller;
 
+import nl.miwgroningen.se.start.model.WordMap;
 import nl.miwgroningen.se.start.model.WordSet;
 
 /**
@@ -10,14 +11,18 @@ import nl.miwgroningen.se.start.model.WordSet;
 public class Launcher {
 
     public static void main(String[] args) {
-        WordSet wordSet = new WordSet();
+        WordMap wordMap = new WordMap();
 
-        wordSet.readFromFile("src/main/resources/MaxHavelaar.txt");
+//        wordMap.readFromFile("MaxHavelaar.txt");
+        wordMap.readFromFile("gedichten.txt");
+//        wordMap.readFromFile("input.txt");
 
-        System.out.println(wordSet.getNrOfUniqueWords());
+        System.out.println(wordMap.getWordsSorted());
 
-        for (String word : wordSet.getWordsSorted()) {
-            System.out.println(word);
+        for (String word : wordMap.getWordsSorted()) {
+            System.out.printf("%s: %d\n", word, wordMap.getWordCount(word));
+        }
+        System.out.println(wordMap.getNrOfUniqueWords());
+
         }
     }
-}
