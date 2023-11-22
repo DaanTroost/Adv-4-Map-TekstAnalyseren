@@ -20,7 +20,6 @@ public class WordMap {
                 if (!word.equals("")) {
                     wordmap.put(word, wordmap.getOrDefault(word, 0) + 1);
                 }
-
             }
         } catch (IOException e){
             System.err.println("File does not appear to exist at this location.");
