@@ -20,7 +20,7 @@ public class WordLinesMap {
                 String[] words = line.split("\\s+");
                 for (String word : words) {
                     word = word.replaceAll("[^A-Za-z0-9]", "");
-                    if (word != "") {
+                    if (!word.isEmpty() && !word.equals(" ")) {
                         wordLines.computeIfAbsent(word, lines -> new ArrayList<>()).add(lineCount);
                     }
                 }
@@ -29,6 +29,11 @@ public class WordLinesMap {
         } catch (IOException e){
             System.err.println("File does not appear to exist at this location.");
         }
+    }
+
+    public int getNrOfUniqueWords(){
+        List<String> wordList = new ArrayList<>(wordLines.keySet());
+        return wordList.size();
     }
 
     public Iterable<String> getWordsSorted(){
